@@ -27,8 +27,17 @@ Output will provide the URL you need to access in order to use the page:
    └───────────────────────────────────────────┘
 ```
 
+You can use a different approach to serve the application.
+
 ## Installing modules
 Cypress is required to automate the tests. I is listed as a dependency in [`package.json`](package.json) file, so you just need to run `npm install`. The version used here is not mandatory, but using different ones may affect execution.
 
-## Using Cypress
+## Running tests
 Use the command `npx cypress open` to configure the project in cypress. A window will appear. Select "E2E Testing", then yout desired browser -- I chose electron, but feel free to experiment. Then create your first spec and close the Cypress windows. Note that a new directory named [`cypress`](./cypress/) now exists in the project root, as well as a file named [`cypress.config.js`](./cypress.config.js).
+
+I added some custom commands in under scripts [`package.json`](package.json).
+- `start` will serve the application
+- `cy:open` will open Cypress UI, so tests can be executed interactivelly
+- `test` will run tests in *headless* mode.
+
+In order to use such commands do `npm run <COMMAND>`. Make sure to start or else it won't work, since base URL will not be available.
