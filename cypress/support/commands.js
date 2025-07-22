@@ -23,3 +23,21 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add(
+  "sendValidForm",
+  (
+    data = {
+      firstName: "Slim",
+      lastName: "Shady",
+      email: "email@example.com",
+      message: "This is a test message.",
+    }
+  ) => {
+    cy.get('input[id="firstName"]').type(data.firstName || "Slim");
+    cy.get('input[id="lastName"]').type(data.lastName || "Shady");
+    cy.get('input[id="email"]').type(data.email || "email@example.com");
+    cy.get('textarea[id="open-text-area"]').type(data.message || "This is a test message.");
+    cy.get('button[type="submit"]').click();
+  }
+);
