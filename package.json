@@ -4,7 +4,7 @@
   "description": "Curso 'Cypress, do Zero à Nuvem' da Escola Talking About Testing.",
   "main": "src/index.html",
   "scripts": {
-    "start": "serve -s ./src",
+    "start": "serve ./src",
     "cy:open": "cypress open",
     "test": "cypress run"
   },
