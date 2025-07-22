@@ -61,4 +61,16 @@ describe("CAC TAT", () => {
     cy.sendValidForm();
     cy.get(".success").should("be.visible");
   });
+
+  it("Select product by its text", () => {
+    cy.get('select[id="product"]').select("YouTube").should("have.value", "youtube");
+  });
+
+  it("Select product by its value", () => {
+    cy.get('select[id="product"]').select("mentoria").should("have.value", "mentoria");
+  });
+
+  it("Select product by its index", () => {
+    cy.get('select[id="product"]').select(1).should("have.value", "blog");
+  });
 });
