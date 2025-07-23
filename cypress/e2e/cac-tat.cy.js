@@ -85,4 +85,22 @@ describe("CAC TAT", () => {
       .check().should("be.checked")
       .last().uncheck().should("not.be.checked");
   });
+
+  it("File upload works correctly", () => {
+    cy.get('input[type="file"]')
+      .selectFile("cypress/fixtures/example.json")
+      .should((input) => {
+        expect(input[0].files[0].name).to.equal("example.json");
+      });
+  });
+
+  it("File upload works correctly with drag and drop action", () => {
+    cy.fixture("example.json").as("sampleFile");
+    cy.get('input[type="file"]')
+      .selectFile("@sampleFile", { action: "drag-drop"})
+      .should((input) => {
+        expect(input[0].files[0].name).to.equal("example.json");
+      });
+  });
 });
+ 
