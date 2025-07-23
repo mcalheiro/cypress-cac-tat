@@ -73,4 +73,10 @@ describe("CAC TAT", () => {
   it("Select product by its index", () => {
     cy.get('select[id="product"]').select(1).should("have.value", "blog");
   });
+
+  it("Radio buttons should be checked when selected", () => {
+    cy.get('input[type="radio"]').each((radioButton) => {
+      cy.wrap(radioButton).check().should("be.checked");
+    });
+  });
 });
