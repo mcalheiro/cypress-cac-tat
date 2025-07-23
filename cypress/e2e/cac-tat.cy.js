@@ -32,7 +32,7 @@ describe("CAC TAT", () => {
     cy.get('input[id="lastName"]').type("Shady");
     cy.get('input[id="email"]').type("email@example.com");
     cy.get('textarea[id="open-text-area"]').type("This is a test message.");
-    cy.get('input[id="phone-checkbox"]').click();
+    cy.get('input[id="phone-checkbox"]').check();
     cy.get('button[type="submit"]').click();
     cy.get(".error").should("be.visible");
   });
@@ -78,5 +78,11 @@ describe("CAC TAT", () => {
     cy.get('input[type="radio"]').each((radioButton) => {
       cy.wrap(radioButton).check().should("be.checked");
     });
+  });
+
+  it("Checkboxes should be checked and unchecked", () => {
+    cy.get('input[type="checkbox"]')
+      .check().should("be.checked")
+      .last().uncheck().should("not.be.checked");
   });
 });
