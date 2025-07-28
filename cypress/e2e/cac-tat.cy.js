@@ -57,6 +57,13 @@ describe("CAC TAT form", () => {
     cy.get(".error").should("be.visible");
   });
 
+  it("Error message disappears after 3 seconds", () => {
+    cy.clock();
+    cy.get('button[type="submit"]').click();
+    cy.tick(3000);
+    cy.get(".error").should("not.be.visible");
+  });
+
   it("Submit form with custom command", () => {
     cy.sendValidForm();
     cy.get(".success").should("be.visible");
