@@ -102,5 +102,16 @@ describe("CAC TAT", () => {
         expect(input[0].files[0].name).to.equal("example.json");
       });
   });
+
+  it("Verify privacy policy link opens in a new tab", () => {
+    cy.contains('a', 'Política de Privacidade').should("have.attr", "target", "_blank");
+  });
+
+  it("Navigate to privacy policy page and verify its content", () => {
+    cy.contains('a', 'Política de Privacidade')
+      .invoke('removeAttr', 'target')
+      .click();
+    cy.get('h1').should("have.text", "CAC TAT - Política de Privacidade");
+  });
 });
  
