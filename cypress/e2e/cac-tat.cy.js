@@ -1,4 +1,4 @@
-describe("CAC TAT", () => {
+describe("CAC TAT form", () => {
   beforeEach(() => {
     cy.visit("/");
   });

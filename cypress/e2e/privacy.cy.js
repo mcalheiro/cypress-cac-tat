@@ -1,4 +1,4 @@
-describe("CAC TAT", () => {
+describe("CAC TAT privacy", () => {
   beforeEach(() => {
     cy.visit("/privacy");
   });
